@@ -1,9 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import Carta from './components/Carta'
 
 function App() {
   return (
-    <div className="App">
+    {/*<div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -19,6 +20,8 @@ function App() {
         </a>
       </header>
     </div>
+    */}
+    <Carta></>
   );
 }
 
