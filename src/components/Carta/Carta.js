@@ -12,10 +12,6 @@ const CartaContainer = styled.div`
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
-const CartaImagen = styled.img`
-  width: 100%;
-  border-radius: 8px 8px 0 0;
-`;
 
 const CartaContenido = styled.div`
   padding: 8px 0;
@@ -34,10 +30,9 @@ const CartaTexto = styled.p`
 const Carta = ({ palo, numero }) => {
   return (
     <CartaContainer>
-      <CartaImagen src={imagen} alt="Imagen de la carta" />
       <CartaContenido>
-        <CartaTitulo>{titulo}</CartaTitulo>
-        <CartaTexto>{contenido}</CartaTexto>
+        <CartaTitulo>{palo}</CartaTitulo>
+        <CartaTexto>{numero}</CartaTexto>
       </CartaContenido>
     </CartaContainer>
   );
