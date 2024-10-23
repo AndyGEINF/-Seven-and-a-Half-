@@ -9,7 +9,7 @@ const Container = styled.div`
 const App = () => {
   return (
     <Container>
-      <Carta palo="diamante" numero="7">
+      <Carta palo="trebol" numero="J">
 
       </Carta>
     </Container>

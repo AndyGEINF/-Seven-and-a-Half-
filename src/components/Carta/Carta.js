@@ -37,12 +37,13 @@ const CartaContainer = styled.div`
 const Numero = styled.span`
   color: white;
   font-size: 48px;
-  margin-left: 10px;
+  margin-left: 5px;
 `;
 
 const PaloImagen = styled.img`
   width: 40px;
   height: 40px;
+  margin: 5px 0px 0px 8px;
 `;
 
 //El diccionario no es mejor ponerlo fuera de Carta?
