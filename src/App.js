@@ -1,12 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-import Carta from './components/Carta'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Carta from './components/Carta/Carta.js'
 
+const Container = styled.div`
+  padding:20px;
+`;
 const App = () => {
   return (
-    <Carta palo="diamantes" numero="7">
+    <Container>
+      <Carta palo="diamante" numero="7">
 
-    </Carta>
+      </Carta>
+    </Container>
   );
 };
 
