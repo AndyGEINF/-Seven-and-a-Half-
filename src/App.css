@@ -36,3 +36,56 @@
     transform: rotate(360deg);
   }
 }
+
+.pantalla-inicial {
+  height: 100vh; /* Hace que cubra toda la pantalla */
+  background-image: url('./assets/images/inici-fons.jpg');
+  background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+  background-position: center; /* Centra la imagen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.pantalla-inicial h1 {
+  font-size: 6rem; 
+  color: rgb(224, 238, 222);
+  font-family: cursive;
+  margin-top: -250px;
+  text-align: center;
+  animation: neon 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon {
+  0% {
+    text-shadow: 3px 3px 5px rgba(17, 199, 17, 0.5);
+  }
+  50% {
+    text-shadow: 3px 3px 5px rgba(36, 4, 216, 0.781);
+  }
+  100% {
+    text-shadow: 3px 3px 5px rgba(255, 0, 0, 0.5);
+  }
+}
+
+.pantalla-inicial h2{
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.pantalla-inicial button{
+  font-size: 1.5rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  padding: 10px 20px;
+  margin-top: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 50px;
+}
