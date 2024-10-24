@@ -89,3 +89,7 @@
   transition: 0.3s;
   border-radius: 50px;
 }
+
+.pantalla-inicial button:hover{
+  background-color: rgba(0, 0, 0, 0.849);
+}
