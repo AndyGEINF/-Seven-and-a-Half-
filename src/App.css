@@ -38,10 +38,10 @@
 }
 
 .pantalla-inicial {
-  height: 100vh; /* Hace que cubra toda la pantalla */
+  height: 100vh; 
   background-image: url('./assets/images/inici-fons.jpg');
-  background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
-  background-position: center; /* Centra la imagen */
+  background-size: cover; 
+  background-position: center; 
   display: flex;
   flex-direction: column;
   justify-content: center;
