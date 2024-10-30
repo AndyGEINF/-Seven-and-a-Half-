@@ -1,28 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import Carta from './components/Carta/Carta.js'
-import './App.css';
+import Carta from './components/Carta/Carta.js';
+import PantallaInicial from './PantallaInicial.js'; // Importa PantallaInicial
+import Login from './Login.js'; // Importa Login
+
 
 const Container = styled.div`
-  padding:20px;
+  padding: 20px;
 `;
+
 const App = () => {
   return (
-    <>
-    <div className="pantalla-inicial">
-      <h1>SEVEN & HALF</h1>
-      <h2>¡Ganar dinero nunca fue tan fácil!</h2>
-      <button>Comenzar</button>
-    </div>
-    <Container>
-      <Carta palo="trebol" numero="J">
-
-      </Carta>
-    </Container>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<PantallaInicial />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 };
-
 
 export default App;
