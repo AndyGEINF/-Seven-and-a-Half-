@@ -3,6 +3,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './PantallaInicial.css'; // Crea un archivo CSS si necesitas estilos específicos
 
+
+
 const PantallaInicial = () => {
   const navigate = useNavigate();
 
