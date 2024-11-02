@@ -10,8 +10,8 @@ import trebol from '../../assets/images/trebol.svg';
 
 // Define el componente 'Carta' con estilos en JS usando styled-components
 const CartaContainer = styled.div`
-  height: 180px;
-  width: 120px;
+  height: 100px;
+  width: 60px;
   padding: 10px;
   display:flex;
   flex-direction: column;
@@ -37,13 +37,13 @@ const CartaContainer = styled.div`
 
 const Numero = styled.span`
   color: white;
-  font-size: 48px;
+  font-size: 32px;
   margin-left: 5px;
 `;
 
 const PaloImagen = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   margin: 5px 0px 0px 8px;
 `;
 

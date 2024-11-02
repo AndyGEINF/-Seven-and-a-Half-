@@ -4,25 +4,35 @@ import Baraja from "./components/Baraja";
 import Contador from "./components/Contador";
 import styled from 'styled-components';
 import Button from "./components/Button";
+import mesaCasino from './assets/images/mesaCasino.png';
 
 const Tablero = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
+  padding: 20px;
 `;
 
 const Movimientos = styled.div`
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   padding: 20px;
-  width: 100%;
+  gap: 50px;
+`;
+
+
+const Game = styled.div`
+  height: 100vh;
+  background-image: url(${mesaCasino});
+  background-size: cover; 
+  background-position: center;
 `;
 
 const Login = () => {
   return (
-    <div>
-      <h2>Iniciar Sesión</h2>
+    <Game>
+      {/*<h2>Iniciar Sesión</h2>*/}
       <Tablero>
         <Baraja
           cartas={[
@@ -33,10 +43,6 @@ const Login = () => {
         ></Baraja>
         <Contador numero="7,5" showLabel label="Dealer"></Contador>
       </Tablero>
-      <Movimientos>
-        <Button label="Card"></Button>
-        <Button label="Stop"></Button>
-      </Movimientos>
       <Tablero>
         <Baraja
           cartas={[
@@ -45,9 +51,13 @@ const Login = () => {
             { numero: "K", palo: "trebol" },
           ]}
         ></Baraja>
-        <Contador numero="7,5" showLabel label="Jugador"></Contador>
+        <Movimientos>
+          <Contador numero="7,5" showLabel label="Jugador"></Contador>
+          <Button label="Card"></Button>
+          <Button label="Stop"></Button>
+        </Movimientos>
       </Tablero>
-      {/*
+      {/* 
       <Baraja
         cartas={[
           { numero: "A", palo: "corazon" },
@@ -210,8 +220,9 @@ const Login = () => {
         ]}
       ></Baraja>
       */}
+      
       {/* Aquí puedes agregar tu formulario de inicio de sesión */}
-    </div>
+    </Game>
   );
 };
 

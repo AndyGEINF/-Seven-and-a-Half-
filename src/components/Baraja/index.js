@@ -3,21 +3,21 @@ import styled from 'styled-components';
 import Carta from '../Carta';
 
 const POSICIONES_CARTAS = [
-  { left: 50, top: 260, rotate: -84 },
-  { left: 60, top: 210, rotate: -72 },
-  { left: 80, top: 160, rotate: -60 },
-  { left: 120, top: 110, rotate: -48 },
-  { left: 170, top: 70, rotate: -36 },
-  { left: 220, top: 40, rotate: -24 },
-  { left: 270, top: 20, rotate: -12 },
-  { left: 320, top: 10, rotate: 0 },
-  { left: 370, top: 20, rotate: 12 },
-  { left: 420, top: 40, rotate: 24 },
-  { left: 470, top: 70, rotate: 36 },
-  { left: 520, top: 110, rotate: 48 },
-  { left: 560, top: 160, rotate: 60 },
-  { left: 580, top: 210, rotate: 72 },
-  { left: 590, top: 260, rotate: 84 },
+  { left: 50, top: 250, rotate: -84 },
+  { left: 60, top: 200, rotate: -72 },
+  { left: 80, top: 150, rotate: -60 },
+  { left: 120, top: 100, rotate: -48 },
+  { left: 170, top: 60, rotate: -36 },
+  { left: 220, top: 30, rotate: -24 },
+  { left: 270, top: 10, rotate: -12 },
+  { left: 320, top: 0, rotate: 0 },
+  { left: 370, top: 10, rotate: 12 },
+  { left: 420, top: 30, rotate: 24 },
+  { left: 470, top: 60, rotate: 36 },
+  { left: 520, top: 100, rotate: 48 },
+  { left: 560, top: 150, rotate: 60 },
+  { left: 580, top: 200, rotate: 72 },
+  { left: 590, top: 250, rotate: 84 },
 ];
 
 const BarajaContainer = styled.div`
@@ -26,8 +26,9 @@ const BarajaContainer = styled.div`
   flex-wrap: wrap;
   align-items: flex-end;
   position: relative;
-  height: 450px;
+  height: 360px;
   width: 800px;
+  overflow: hidden;
 `;
 
 const Baraja = ({ cartas, onAgregarCarta, onCartaHover }) => {
