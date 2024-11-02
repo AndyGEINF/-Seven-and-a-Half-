@@ -3,6 +3,7 @@ import React from "react";
 import Baraja from "./components/Baraja";
 import Contador from "./components/Contador";
 import styled from 'styled-components';
+import Button from "./components/Button";
 
 const Tablero = styled.div`
   display: flex;
@@ -13,6 +14,8 @@ const Tablero = styled.div`
 
 const Movimientos = styled.div`
   display: flex;
+  justify-content: space-around;
+  padding: 20px;
   width: 100%;
 `;
 
@@ -20,7 +23,6 @@ const Login = () => {
   return (
     <div>
       <h2>Iniciar Sesión</h2>
-      <Contador numero="5,5"></Contador>
       <Tablero>
         <Baraja
           cartas={[
@@ -31,7 +33,10 @@ const Login = () => {
         ></Baraja>
         <Contador numero="7,5" showLabel label="Dealer"></Contador>
       </Tablero>
-      <Movimientos></Movimientos>
+      <Movimientos>
+        <Button label="Card"></Button>
+        <Button label="Stop"></Button>
+      </Movimientos>
       <Tablero>
         <Baraja
           cartas={[
