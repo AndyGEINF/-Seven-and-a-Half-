@@ -17,6 +17,7 @@ const CartaContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  position: absolute;
   border-radius: 10%;
   background-color: ${({ palo }) => {
     switch (palo) {
@@ -50,7 +51,7 @@ const PaloImagen = styled.img`
 //Definicions
 
 
-const Carta = ({ numero, palo }) => {
+const Carta = ({ numero, palo, style }) => {
 
     const palos = {
         diamante: diamante,
@@ -60,7 +61,7 @@ const Carta = ({ numero, palo }) => {
     };
 
     return (
-        <CartaContainer palo={palo}>
+        <CartaContainer style={style} palo={palo}>
             <Numero>{numero}</Numero>
             <PaloImagen src={palos[palo]} alt={`Palo de ${palo}`} />
         </CartaContainer>
