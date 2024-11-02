@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Carta from '../Carta/Carta';
 
 const POSICIONES_CARTAS = [
-  { left: 50, top: 170, rotate: -84 },
-  { left: 1, top: 200, rotate: -72 },
+  { left: 130, top: 260, rotate: -84 },
+  { left: 140, top: 210, rotate: -72 },
   { left: 160, top: 160, rotate: -60 },
   { left: 200, top: 110, rotate: -48 },
   { left: 250, top: 70, rotate: -36 },
@@ -16,8 +16,8 @@ const POSICIONES_CARTAS = [
   { left: 550, top: 70, rotate: 36 },
   { left: 600, top: 110, rotate: 48 },
   { left: 640, top: 160, rotate: 60 },
-  { left: 700, top: 200, rotate: 72 },
-  { left: 750, top: 170, rotate: 84 },
+  { left: 660, top: 210, rotate: 72 },
+  { left: 670, top: 260, rotate: 84 },
 ];
 
 const BarajaContainer = styled.div`
