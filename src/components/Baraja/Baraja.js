@@ -3,21 +3,21 @@ import styled from 'styled-components';
 import Carta from '../Carta/Carta';
 
 const POSICIONES_CARTAS = [
-  { left: 10, top: 70, rotate: -84 },
-  { left: 10, top: 60, rotate: -72 },
-  { left: 10, top: 50, rotate: -60 },
-  { left: 40, top: 40, rotate: -48 },
-  { left: 40, top: 30, rotate: -36 },
-  { left: 40, top: 20, rotate: -24 },
-  { left: 40, top: 10, rotate: -12 },
-  { left: 40, top: 0, rotate: 0 },
-  { left: 10, top: 10, rotate: 12 },
-  { left: 10, top: 20, rotate: 24 },
-  { left: 10, top: 30, rotate: 36 },
-  { left: 40, top: 40, rotate: 48 },
-  { left: 40, top: 50, rotate: 60 },
-  { left: 40, top: 60, rotate: 72 },
-  { left: 40, top: 70, rotate: 84 },
+  { left: 50, top: 170, rotate: -84 },
+  { left: 1, top: 200, rotate: -72 },
+  { left: 160, top: 160, rotate: -60 },
+  { left: 200, top: 110, rotate: -48 },
+  { left: 250, top: 70, rotate: -36 },
+  { left: 300, top: 40, rotate: -24 },
+  { left: 350, top: 20, rotate: -12 },
+  { left: 400, top: 10, rotate: 0 },
+  { left: 450, top: 20, rotate: 12 },
+  { left: 500, top: 40, rotate: 24 },
+  { left: 550, top: 70, rotate: 36 },
+  { left: 600, top: 110, rotate: 48 },
+  { left: 640, top: 160, rotate: 60 },
+  { left: 700, top: 200, rotate: 72 },
+  { left: 750, top: 170, rotate: 84 },
 ];
 
 const BarajaContainer = styled.div`
@@ -45,27 +45,30 @@ const Baraja = ({ cartas, onAgregarCarta, onCartaHover }) => {
       {cartasEnBaraja.map((carta, index) => {
         const numCartas = cartasEnBaraja.length;
         const isEven = numCartas % 2 === 0;
-        let middleIndex = isEven ? numCartas / 2 - 1 : Math.floor(numCartas / 2);
-        if(isEven && index>middleIndex){
-          middleIndex++;
+        let middleIndex = Math.floor(numCartas / 2);
+        if(isEven && index>=middleIndex){
+          middleIndex--;
         }
         const offset = index - middleIndex;
+        console.warn('Num', numCartas)
+        console.warn('Midle Index',middleIndex)
 
-        // Ajuste de altura basado en si el número de cartas es par o impar
-        const topPosition = isEven ? Math.abs(offset) * 20 : Math.abs(offset) * 30;
-        const leftPosition = 500 + offset * 50;
-        const rotationAngle = offset * 12; // Ajusta el multiplicador según el efecto que quieras
-
-        console.warn('top Position',index,topPosition);
-        console.warn('Rotation Angle',index,rotationAngle);
+        const posicion = POSICIONES_CARTAS[offset+7] || { left: 0, top: 0, rotate: 0 };
 
         //Els graus van de un rang de -80 a 80. Si es senar la del centre sera 0, si es parell les del tindran graus.
         //Maxim hi hauran 14 cartas
         // Si son 2 hauria de ser top 
 
         //fer una lista de left, de height y de degrees
-
-
+        let extraLeft=0;
+        if(isEven){
+          if(index<middleIndex){
+            extraLeft=20;
+          }
+          else{
+            extraLeft=-20;
+          }
+        }
 
         return (
           <Carta
@@ -77,10 +80,10 @@ const Baraja = ({ cartas, onAgregarCarta, onCartaHover }) => {
             style={{
               position: 'absolute',
               //left: `${(index * 70)+50}px`,
-              left: `${leftPosition}px`,
-              top: `${topPosition}px`,
+              left: `${(posicion.left + extraLeft)}px`,
+              top: `${posicion.top}px`,
               zIndex: index,
-              transform: `rotate(${rotationAngle}deg)`
+              transform: `rotate(${posicion.rotate}deg)`
             }}
           />
         );
