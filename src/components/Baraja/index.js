@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Carta from '../Carta/Carta';
+import Carta from '../Carta';
 
 const POSICIONES_CARTAS = [
-  { left: 130, top: 260, rotate: -84 },
-  { left: 140, top: 210, rotate: -72 },
-  { left: 160, top: 160, rotate: -60 },
-  { left: 200, top: 110, rotate: -48 },
-  { left: 250, top: 70, rotate: -36 },
-  { left: 300, top: 40, rotate: -24 },
-  { left: 350, top: 20, rotate: -12 },
-  { left: 400, top: 10, rotate: 0 },
-  { left: 450, top: 20, rotate: 12 },
-  { left: 500, top: 40, rotate: 24 },
-  { left: 550, top: 70, rotate: 36 },
-  { left: 600, top: 110, rotate: 48 },
-  { left: 640, top: 160, rotate: 60 },
-  { left: 660, top: 210, rotate: 72 },
-  { left: 670, top: 260, rotate: 84 },
+  { left: 50, top: 260, rotate: -84 },
+  { left: 60, top: 210, rotate: -72 },
+  { left: 80, top: 160, rotate: -60 },
+  { left: 120, top: 110, rotate: -48 },
+  { left: 170, top: 70, rotate: -36 },
+  { left: 220, top: 40, rotate: -24 },
+  { left: 270, top: 20, rotate: -12 },
+  { left: 320, top: 10, rotate: 0 },
+  { left: 370, top: 20, rotate: 12 },
+  { left: 420, top: 40, rotate: 24 },
+  { left: 470, top: 70, rotate: 36 },
+  { left: 520, top: 110, rotate: 48 },
+  { left: 560, top: 160, rotate: 60 },
+  { left: 580, top: 210, rotate: 72 },
+  { left: 590, top: 260, rotate: 84 },
 ];
 
 const BarajaContainer = styled.div`
@@ -26,8 +26,8 @@ const BarajaContainer = styled.div`
   flex-wrap: wrap;
   align-items: flex-end;
   position: relative;
-  height: 500px;
-  width: 500px;
+  height: 450px;
+  width: 800px;
 `;
 
 const Baraja = ({ cartas, onAgregarCarta, onCartaHover }) => {

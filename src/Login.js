@@ -1,12 +1,48 @@
 // components/Login.js
 import React from "react";
-import Carta from "./components/Carta/Carta";
-import Baraja from "./components/Baraja/Baraja";
+import Baraja from "./components/Baraja";
+import Contador from "./components/Contador";
+import styled from 'styled-components';
+
+const Tablero = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+`;
+
+const Movimientos = styled.div`
+  display: flex;
+  width: 100%;
+`;
 
 const Login = () => {
   return (
     <div>
       <h2>Iniciar Sesión</h2>
+      <Contador numero="5,5"></Contador>
+      <Tablero>
+        <Baraja
+          cartas={[
+            { numero: "A", palo: "corazon" },
+            { numero: "2", palo: "diamante" },
+            { numero: "K", palo: "trebol" },
+          ]}
+        ></Baraja>
+        <Contador numero="7,5" showLabel label="Dealer"></Contador>
+      </Tablero>
+      <Movimientos></Movimientos>
+      <Tablero>
+        <Baraja
+          cartas={[
+            { numero: "A", palo: "corazon" },
+            { numero: "2", palo: "diamante" },
+            { numero: "K", palo: "trebol" },
+          ]}
+        ></Baraja>
+        <Contador numero="7,5" showLabel label="Jugador"></Contador>
+      </Tablero>
+      {/*
       <Baraja
         cartas={[
           { numero: "A", palo: "corazon" },
@@ -168,6 +204,7 @@ const Login = () => {
           { numero: "A", palo: "trebol" },
         ]}
       ></Baraja>
+      */}
       {/* Aquí puedes agregar tu formulario de inicio de sesión */}
     </div>
   );
