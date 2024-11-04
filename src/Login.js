@@ -6,6 +6,18 @@ import styled from 'styled-components';
 import Button from "./components/Button";
 import mesaCasino from './assets/images/mesaCasino.png';
 
+const Game = styled.div`
+  height: 100vh;
+  max-width: 100vw;
+  background-image: url(${mesaCasino});
+  background-size: cover; 
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+`;
+
 const Tablero = styled.div`
   display: flex;
   flex-direction: row;
@@ -14,49 +26,50 @@ const Tablero = styled.div`
   padding: 20px;
 `;
 
-const Movimientos = styled.div`
+const Tableros = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  gap: 50px;
+  justify-content: center;
+  align-items: center;
 `;
 
-
-const Game = styled.div`
-  height: 100vh;
-  background-image: url(${mesaCasino});
-  background-size: cover; 
-  background-position: center;
+const Movimientos = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  gap: 50px;
 `;
 
 const Login = () => {
   return (
     <Game>
       {/*<h2>Iniciar Sesión</h2>*/}
-      <Tablero>
-        <Baraja
-          cartas={[
-            { numero: "A", palo: "corazon" },
-            { numero: "2", palo: "diamante" },
-            { numero: "K", palo: "trebol" },
-          ]}
-        ></Baraja>
-        <Contador numero="7,5" showLabel label="Dealer"></Contador>
-      </Tablero>
-      <Tablero>
-        <Baraja
-          cartas={[
-            { numero: "A", palo: "corazon" },
-            { numero: "2", palo: "diamante" },
-            { numero: "K", palo: "trebol" },
-          ]}
-        ></Baraja>
+      <Tableros>
+        <Tablero>
+          <Baraja
+            cartas={[
+              { numero: "A", palo: "corazon" },
+              { numero: "2", palo: "diamante" },
+              { numero: "K", palo: "trebol" },
+            ]}
+          ></Baraja>
+          <Contador numero="7,5" showLabel label="Dealer"></Contador>
+        </Tablero>
         <Movimientos>
-          <Contador numero="7,5" showLabel label="Jugador"></Contador>
-          <Button label="Card"></Button>
+          <Button icon="more" showIcon label="Card"></Button>
           <Button label="Stop"></Button>
         </Movimientos>
-      </Tablero>
+        <Tablero>
+          <Baraja
+            cartas={[
+              { numero: "A", palo: "corazon" },
+              { numero: "2", palo: "diamante" },
+              { numero: "K", palo: "trebol" },
+            ]}
+          ></Baraja>
+          <Contador numero="7,5" showLabel label="Jugador"></Contador>
+        </Tablero>
+      </Tableros>
       {/* 
       <Baraja
         cartas={[

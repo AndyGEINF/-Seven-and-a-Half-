@@ -51,8 +51,8 @@ const Baraja = ({ cartas, onAgregarCarta, onCartaHover }) => {
           middleIndex--;
         }
         const offset = index - middleIndex;
-        console.warn('Num', numCartas)
-        console.warn('Midle Index',middleIndex)
+        //console.warn('Num', numCartas)
+        //console.warn('Midle Index',middleIndex)
 
         const posicion = POSICIONES_CARTAS[offset+7] || { left: 0, top: 0, rotate: 0 };
 
