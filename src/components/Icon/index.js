@@ -1,8 +1,16 @@
 import React from 'react';
+import styled from "styled-components";
 import ICONS from '../../assets/icons';
 import COLORS from '../../styles/colors';
 
-const Icon = ( iconName, size, color ) => {
+const IconContainer = styled.div`
+    display: flex;
+    justify-content: ;
+    width: ${({ tamanyo }) => tamanyo}px;
+    height: ${({ tamanyo }) => tamanyo}px;
+`;
+
+const Icon = ( {iconName, size, color} ) => {
     const IconComponent = ICONS[iconName];
 
     if (!IconComponent) {
@@ -10,7 +18,11 @@ const Icon = ( iconName, size, color ) => {
         return null; // Devuelve null si el icono no existe
     }
 
-    return <IconComponent size={size} color={color} />;
+    return (
+        <IconContainer tamanyo={size}>
+            <IconComponent size={size} color={color} />
+        </IconContainer>
+    );
 };
 
 Icon.defaultProps = {
