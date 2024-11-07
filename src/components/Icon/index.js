@@ -5,7 +5,6 @@ import COLORS from '../../styles/colors';
 
 const IconContainer = styled.div`
     display: flex;
-    justify-content: ;
     width: ${({ tamanyo }) => tamanyo}px;
     height: ${({ tamanyo }) => tamanyo}px;
 `;
