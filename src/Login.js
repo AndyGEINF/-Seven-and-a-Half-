@@ -57,7 +57,7 @@ const Login = () => {
         </Tablero>
         <Movimientos>
           <Button icon="more" showIcon label="Card"></Button>
-          <Button label="Stop"></Button>
+          <Button icon="hand" showIcon label="Stop"></Button>
         </Movimientos>
         <Tablero>
           <Baraja
