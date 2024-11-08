@@ -5,6 +5,7 @@ import Contador from "./components/Contador";
 import styled from 'styled-components';
 import Button from "./components/Button";
 import mesaCasino from './assets/images/mesaCasino.png';
+import { useLocation } from 'react-router-dom';
 
 const Game = styled.div`
   height: 100vh;
@@ -40,7 +41,10 @@ const Movimientos = styled.div`
   gap: 50px;
 `;
 
-const Login = () => {
+const TableGame = () => {
+    const location = useLocation();
+    const { name, money } = location.state || {};
+
   return (
     <Game>
       {/*<h2>Iniciar Sesión</h2>*/}
@@ -67,7 +71,7 @@ const Login = () => {
               { numero: "K", palo: "trebol" },
             ]}
           ></Baraja>
-          <Contador numero="7,5" showLabel label="Jugador"></Contador>
+          <Contador numero="7,5" showLabel label={name}></Contador>
         </Tablero>
       </Tableros>
       {/* 
@@ -239,4 +243,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default TableGame;
