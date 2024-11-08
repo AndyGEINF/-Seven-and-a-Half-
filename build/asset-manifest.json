@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8160bb0d.css",
+    "main.js": "/static/js/main.8944aaf7.js",
+    "static/js/453.071fb75d.chunk.js": "/static/js/453.071fb75d.chunk.js",
+    "static/media/mesaCasino.png": "/static/media/mesaCasino.2151836c61f702a24b0d.png",
+    "index.html": "/index.html",
+    "static/media/corazon.svg": "/static/media/corazon.7cacf596febc130c0e7423a3935346ce.svg",
+    "static/media/pica.svg": "/static/media/pica.1e35b8aac937875095d242412d9d4dc9.svg",
+    "static/media/trebol.svg": "/static/media/trebol.811165f1cda0d1a5a5c2061b9b657576.svg",
+    "static/media/diamante.svg": "/static/media/diamante.d0e3a5a1adad3d8f3f4412a017251c83.svg",
+    "main.8160bb0d.css.map": "/static/css/main.8160bb0d.css.map",
+    "main.8944aaf7.js.map": "/static/js/main.8944aaf7.js.map",
+    "453.071fb75d.chunk.js.map": "/static/js/453.071fb75d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8160bb0d.css",
+    "static/js/main.8944aaf7.js"
+  ]
+}

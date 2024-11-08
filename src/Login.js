@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
+import mesaCasino from './assets/images/mesaCasino.png';
 
 
 const Input = styled.input`
@@ -8,7 +9,7 @@ const Input = styled.input`
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 200px;
+  width: 200px;  background-color= red; 
   margin-right: 10px;
 
   
@@ -20,6 +21,14 @@ const Input = styled.input`
 
   
   -moz-appearance: textfield;
+`;
+
+const Background = styled.div`
+  height: 100vh;
+  max-width: 100vw;
+  background-image: url(${mesaCasino});
+  background-size: cover; 
+  background-position: center;
 `;
 
 const Login = () => {
@@ -47,7 +56,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <Background>
       <h2>Login</h2>
       <Input
         type="text"
@@ -64,7 +73,7 @@ const Login = () => {
         onChange={(e) => setMoney(parseFloat(e.target.value))}
       />
       <button onClick={handleLogin}>Start the game</button>
-    </div>
+    </Background>
   );  
 };
 
