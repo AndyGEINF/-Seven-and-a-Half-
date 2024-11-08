@@ -29,9 +29,9 @@ const Login = () => {
 
   const handleLogin = () => {
     const validMoney = isNaN(money) || money === '' ? 0 : money;
-  
+    const validName = name.trim() === '' ? 'Player1' : name;
     // Navega a la página de juego enviando name y validMoney como el valor de money
-    navigate('/game', { state: { name, money: validMoney } });
+    navigate('/game', { state: { name: validName, money: validMoney } });
   };
 
   const handleFocus = () => {
