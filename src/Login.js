@@ -8,7 +8,7 @@ import mesaCasino from './assets/images/mesaCasino.png';
 
 const Tablero = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   padding: 20px;
@@ -27,13 +27,21 @@ const Game = styled.div`
   background-image: url(${mesaCasino});
   background-size: cover; 
   background-position: center;
+  display: flex;
+  flex-direction: row;
+`;
+
+const Barajas = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 `;
 
 const Login = () => {
   return (
     <Game>
       {/*<h2>Iniciar Sesión</h2>*/}
-      <Tablero>
+      <Barajas>
         <Baraja
           cartas={[
             { numero: "A", palo: "corazon" },
@@ -41,18 +49,18 @@ const Login = () => {
             { numero: "K", palo: "trebol" },
           ]}
         ></Baraja>
+        <Baraja
+          cartas={[
+            { numero: "A", palo: "corazon" },
+            { numero: "2", palo: "diamante" },
+            { numero: "K", palo: "trebol" },
+          ]}
+        ></Baraja>
+      </Barajas>
+      <Tablero>
         <Contador numero="7,5" showLabel label="Dealer"></Contador>
-      </Tablero>
-      <Tablero>
-        <Baraja
-          cartas={[
-            { numero: "A", palo: "corazon" },
-            { numero: "2", palo: "diamante" },
-            { numero: "K", palo: "trebol" },
-          ]}
-        ></Baraja>
+        <Contador numero="7,5" showLabel label="Jugador"></Contador>
         <Movimientos>
-          <Contador numero="7,5" showLabel label="Jugador"></Contador>
           <Button label="Card"></Button>
           <Button label="Stop"></Button>
         </Movimientos>
