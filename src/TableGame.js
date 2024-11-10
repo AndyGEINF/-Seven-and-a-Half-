@@ -46,16 +46,16 @@ const deck = [
   { palo: 'trebol', numero: 'K' },
 
   // Picas
-  { palo: 'diamante', numero: 'A' },
-  { palo: 'diamante', numero: '2' },
-  { palo: 'diamante', numero: '3' },
-  { palo: 'diamante', numero: '4' },
-  { palo: 'diamante', numero: '5' },
-  { palo: 'diamante', numero: '6' },
-  { palo: 'diamante', numero: '7' },
-  { palo: 'diamante', numero: 'J' },
-  { palo: 'diamante', numero: 'Q' },
-  { palo: 'diamante', numero: 'K' },
+  { palo: 'pica', numero: 'A' },
+  { palo: 'pica', numero: '2' },
+  { palo: 'pica', numero: '3' },
+  { palo: 'pica', numero: '4' },
+  { palo: 'pica', numero: '5' },
+  { palo: 'pica', numero: '6' },
+  { palo: 'pica', numero: '7' },
+  { palo: 'pica', numero: 'J' },
+  { palo: 'pica', numero: 'Q' },
+  { palo: 'pica', numero: 'K' },
 ];
 
 const Game = styled.div`
