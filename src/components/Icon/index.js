@@ -29,8 +29,4 @@ Icon.defaultProps = {
     color: COLORS.neutral0,
 }
 
-<<<<<<< HEAD
 export default Icon;
-=======
-export default Icon;
->>>>>>> recovery-branch
