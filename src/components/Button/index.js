@@ -31,23 +31,13 @@ const Boton = styled.button`
   }
 `;
 
-<<<<<<< HEAD
-const Button = ({ label, icon, showIcon }) => {
-  return (
-    <Boton>
-=======
 const Button = ({ label, icon, showIcon, onClick }) => {
   return (
     <Boton onClick={onClick}>
->>>>>>> recovery-branch
       {showIcon && <Icon iconName={icon}></Icon>}
       {label}
     </Boton>
   );
 };
 
-<<<<<<< HEAD
 export default Button;
-=======
-export default Button;
->>>>>>> recovery-branch

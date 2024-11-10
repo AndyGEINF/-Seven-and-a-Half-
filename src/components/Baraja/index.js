@@ -27,38 +27,7 @@ const Baraja = ({ cartas, onCartaHover }) => {
 
   return (
     <BarajaContainer>
-<<<<<<< HEAD
-      {cartasEnBaraja.map((carta, index) => {
-        const numCartas = cartasEnBaraja.length;
-        const isEven = numCartas % 2 === 0;
-        let middleIndex = Math.floor(numCartas / 2);
-        if(isEven && index>=middleIndex){
-          middleIndex--;
-        }
-        const offset = index - middleIndex;
-        //console.warn('Num', numCartas)
-        //console.warn('Midle Index',middleIndex)
-
-        const posicion = POSICIONES_CARTAS[offset+7] || { left: 0, top: 0, rotate: 0 };
-
-        //Els graus van de un rang de -80 a 80. Si es senar la del centre sera 0, si es parell les del tindran graus.
-        //Maxim hi hauran 14 cartas
-        // Si son 2 hauria de ser top 
-
-        //fer una lista de left, de height y de degrees
-        let extraLeft=0;
-        if(isEven){
-          if(index<middleIndex){
-            extraLeft=20;
-          }
-          else{
-            extraLeft=-20;
-          }
-        }
-
-=======
       {cartas.map((carta, index) => {
->>>>>>> recovery-branch
         return (
           <CartaStyled key={index} index={index} total={total}>
             <Carta
