@@ -41,6 +41,7 @@ const Movimientos = styled.div`
   gap: 50px;
 `;
 
+
 const TableGame = () => {
     const location = useLocation();
     const { name, money } = location.state || {};
