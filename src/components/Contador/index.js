@@ -13,7 +13,7 @@ const CountContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 30px;
     width: 50px;
     height: 50px;
     background-color: gray;

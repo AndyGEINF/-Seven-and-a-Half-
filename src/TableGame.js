@@ -1,5 +1,5 @@
 // components/Login.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Baraja from "./components/Baraja";
 import Contador from "./components/Contador";
 import styled from "styled-components";
@@ -69,13 +69,23 @@ const Game = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  gap: 50px;
+
+  transition: box-shadow 1s ease-in-out;
+  ${({ end }) =>
+    end &&
+    `
+      box-shadow: inset 0 0 200px 200px rgba(0, 0, 0, 0.7);
+    `}
+  
 `;
 
-const Tablero = styled.div`
+const Jugador = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-end;
+  gap: 30px;
 `;
 
 const Movimientos = styled.div`
@@ -113,26 +123,52 @@ const TableGame = () => {
     drawRandomCard(); // Tomar una carta inicial al cargar el componente
   }, []);
 
-  console.warn(playerHand);
+  const points = (hand) => {
+    return hand.reduce((total, carta) => {
+      let valor = 0;
+      if(carta.numero === 'A'){
+        valor = 1;
+      }
+      else if(['J', 'Q', 'K'].includes(carta.numero)){
+        valor=0.5;
+      }
+      else{
+        valor = parseFloat(carta.numero);
+      }
+      return total+valor;
+    }, 0);
+  };
+
+  // Verifica si el jugador ha superado el límite y vacía la baraja si es así
+  useEffect(() => {
+    if (points(playerHand) > 7.5) {
+      setPlayerHand([]); // Vacía la mano del jugador
+    }
+  }, [playerHand]); // Solo se ejecuta cuando `playerHand` cambia
+
+
 
   return (
-    <Game>
-      <Tablero>
+    <Game end={points(playerHand) > 7.5}>
+      <Jugador>
+        <Contador numero={points(dealerHand)} showLabel label="Dealer"></Contador>
         <Baraja
           cartas={dealerHand}
         ></Baraja>
-        <Contador numero="7,5" showLabel label="Dealer"></Contador>
-      </Tablero>
+      </Jugador>
       <Movimientos>
         <Button icon="more" showIcon label="Card" onClick={drawRandomCard}></Button>
         <Button icon="hand" showIcon label="Stop"></Button>
       </Movimientos>
-      <Tablero className="p-4">
+      <Jugador className="p-4">
+        <Contador numero={points(playerHand)} showLabel label={name}></Contador>
         <Baraja
           cartas={playerHand}
-        ></Baraja>
-        <Contador numero="7,5" showLabel label={name}></Contador>
-      </Tablero>
+        >
+          {console.warn(playerHand)}
+          {console.warn(currentDeck)}
+        </Baraja>
+      </Jugador>
     </Game>
   );
 };
