@@ -88,6 +88,7 @@ const TableGame = () => {
   const location = useLocation();
   const { name, money } = location.state || {};
 
+  const [dealerHand, setDealerHand] = useState([]);
   const [playerHand, setPlayerHand] = useState([]);
   const [currentDeck, setCurrentDeck] = useState([...deck]);
 
@@ -118,7 +119,7 @@ const TableGame = () => {
     <Game>
       <Tablero>
         <Baraja
-          cartas={playerHand}
+          cartas={dealerHand}
         ></Baraja>
         <Contador numero="7,5" showLabel label="Dealer"></Contador>
       </Tablero>

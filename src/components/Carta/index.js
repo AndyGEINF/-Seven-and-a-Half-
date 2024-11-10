@@ -16,6 +16,7 @@ const CartaContainer = styled.div`
   align-items: flex-start;
   position: absolute;
   border-radius: 10%;
+  border: 2px solid rgb(0,0,0, 0.6);
   background-color: ${({ palo }) => {
     switch (palo) {
       case 'diamante':

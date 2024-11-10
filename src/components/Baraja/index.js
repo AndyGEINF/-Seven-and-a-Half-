@@ -1,92 +1,43 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import Carta from '../Carta';
-
-const POSICIONES_CARTAS = [
-  { left: 50, top: 250, rotate: -84 },
-  { left: 60, top: 200, rotate: -72 },
-  { left: 80, top: 150, rotate: -60 },
-  { left: 120, top: 100, rotate: -48 },
-  { left: 170, top: 60, rotate: -36 },
-  { left: 220, top: 30, rotate: -24 },
-  { left: 270, top: 10, rotate: -12 },
-  { left: 320, top: 0, rotate: 0 },
-  { left: 370, top: 10, rotate: 12 },
-  { left: 420, top: 30, rotate: 24 },
-  { left: 470, top: 60, rotate: 36 },
-  { left: 520, top: 100, rotate: 48 },
-  { left: 560, top: 150, rotate: 60 },
-  { left: 580, top: 200, rotate: 72 },
-  { left: 590, top: 250, rotate: 84 },
-];
+import React from "react";
+import styled from "styled-components";
+import Carta from "../Carta";
 
 const BarajaContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  position: relative;
-  height: 360px;
+  justify-content: center;
+  align-items: center;
   width: 800px;
+  height: 100px;
   overflow: hidden;
 `;
 
-const Baraja = ({ cartas, onAgregarCarta, onCartaHover }) => {
-  const [cartasEnBaraja, setCartasEnBaraja] = useState(cartas);
+// Estilo para cada carta, con desplazamiento para que se sobrepongan
+const CartaStyled = styled.div`
+  position: absolute;
+  left: ${({ index, total }) => `calc(50% - ${total * 20}px + ${index * 40}px)`};  /* Cálculo para centrar y distribuir las cartas */
+  top: 0px;
+  z-index: ${({ index }) => index}; /* Controlar el orden de apilamiento */
+  transition: all 0.2s ease;
+`;
 
-  const agregarCarta = (nuevaCarta) => {
-    setCartasEnBaraja((prevCartas) => [...prevCartas, nuevaCarta]);
-    if (onAgregarCarta) {
-      onAgregarCarta(nuevaCarta);
-    }
-  };
+const Baraja = ({ cartas, onCartaHover }) => {
+  const total = cartas.length;
 
   return (
     <BarajaContainer>
       {cartas.map((carta, index) => {
-        const numCartas = cartasEnBaraja.length;
-        const isEven = numCartas % 2 === 0;
-        let middleIndex = Math.floor(numCartas / 2);
-        if(isEven && index>=middleIndex){
-          middleIndex--;
-        }
-        const offset = index - middleIndex;
-        console.warn('Num', numCartas)
-        console.warn('Midle Index',middleIndex)
-
-        const posicion = POSICIONES_CARTAS[offset+7] || { left: 0, top: 0, rotate: 0 };
-
-        //Els graus van de un rang de -80 a 80. Si es senar la del centre sera 0, si es parell les del tindran graus.
-        //Maxim hi hauran 14 cartas
-        // Si son 2 hauria de ser top 
-
-        //fer una lista de left, de height y de degrees
-        let extraLeft=0;
-        if(isEven){
-          if(index<middleIndex){
-            extraLeft=20;
-          }
-          else{
-            extraLeft=-20;
-          }
-        }
-
         return (
-          <Carta
-            key={index}
-            numero={carta.numero}
-            palo={carta.palo}
-            onMouseEnter={() => onCartaHover(carta)}
-            onMouseLeave={() => onCartaHover(null)}
-            style={{
-              position: 'absolute',
-              //left: `${(index * 70)+50}px`,
-              left: `${(posicion.left + extraLeft)}px`,
-              top: `${posicion.top}px`,
-              zIndex: index,
-              transform: `rotate(${posicion.rotate}deg)`
-            }}
-          />
+          <CartaStyled key={index} index={index} total={total}>
+            <Carta
+              key={index}
+              numero={carta.numero}
+              palo={carta.palo}
+              onMouseEnter={() => onCartaHover(carta)}
+              onMouseLeave={() => onCartaHover(null)}
+            />
+          </CartaStyled>
         );
       })}
     </BarajaContainer>

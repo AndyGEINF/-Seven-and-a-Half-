@@ -31,9 +31,9 @@ const Boton = styled.button`
   }
 `;
 
-const Button = ({ label, icon, showIcon }) => {
+const Button = ({ label, icon, showIcon, onClick }) => {
   return (
-    <Boton>
+    <Boton onClick={onClick}>
       {showIcon && <Icon iconName={icon}></Icon>}
       {label}
     </Boton>
