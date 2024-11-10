@@ -4,6 +4,7 @@ import styled from "styled-components";
 import mesaCasino from './assets/images/mesaCasino.png';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const Tablero = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,6 +12,8 @@ const Tablero = styled.div`
   align-items: flex-start;
   padding: 20px;
 =======
+=======
+>>>>>>> recovery-branch
 
 const Input = styled.input`
   padding: 10px;
@@ -29,7 +32,10 @@ const Input = styled.input`
 
   
   -moz-appearance: textfield;
+<<<<<<< HEAD
 >>>>>>> 567a9f9aae52692d43c0ba65339f23d0b2420650
+=======
+>>>>>>> recovery-branch
 `;
 
 const Background = styled.div`
@@ -38,14 +44,6 @@ const Background = styled.div`
   background-image: url(${mesaCasino});
   background-size: cover; 
   background-position: center;
-  display: flex;
-  flex-direction: row;
-`;
-
-const Barajas = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
 `;
 
 const Login = () => {
@@ -73,6 +71,7 @@ const Login = () => {
   };
 
   return (
+<<<<<<< HEAD
 <<<<<<< HEAD
     <Game>
       {/*<h2>Iniciar Sesión</h2>*/}
@@ -268,6 +267,8 @@ const Login = () => {
     </Game>
   );
 =======
+=======
+>>>>>>> recovery-branch
     <Background>
       <h2>Login</h2>
       <Input
@@ -287,9 +288,15 @@ const Login = () => {
       <button onClick={handleLogin}>Start the game</button>
     </Background>
   );  
+<<<<<<< HEAD
 >>>>>>> 567a9f9aae52692d43c0ba65339f23d0b2420650
 };
 
 export default Login;
 
 
+=======
+};
+
+export default Login;
+>>>>>>> recovery-branch
