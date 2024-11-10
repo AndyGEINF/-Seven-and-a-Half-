@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import diamante from '../../assets/images/diamante.svg';
-import corazon from '../../assets/images/corazon.svg';
-import pica from '../../assets/images/pica.svg';
-import trebol from '../../assets/images/trebol.svg';
+import Icon from '../Icon';
 
 
 // Define el componente 'Carta' con estilos en JS usando styled-components
@@ -37,14 +34,8 @@ const CartaContainer = styled.div`
 
 const Numero = styled.span`
   color: white;
-  font-size: 32px;
+  font-size: 28px;
   margin-left: 5px;
-`;
-
-const PaloImagen = styled.img`
-  width: 30px;
-  height: 30px;
-  margin: 5px 0px 0px 8px;
 `;
 
 //El diccionario no es mejor ponerlo fuera de Carta?
@@ -52,18 +43,10 @@ const PaloImagen = styled.img`
 
 
 const Carta = ({ numero, palo, style }) => {
-
-    const palos = {
-        diamante: diamante,
-        corazon: corazon,
-        pica: pica,
-        trebol: trebol,
-    };
-
     return (
         <CartaContainer style={style} palo={palo}>
             <Numero>{numero}</Numero>
-            <PaloImagen src={palos[palo]} alt={`Palo de ${palo}`} />
+            <Icon iconName={palo}></Icon>
         </CartaContainer>
     );
 };

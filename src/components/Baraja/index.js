@@ -43,7 +43,7 @@ const Baraja = ({ cartas, onAgregarCarta, onCartaHover }) => {
 
   return (
     <BarajaContainer>
-      {cartasEnBaraja.map((carta, index) => {
+      {cartas.map((carta, index) => {
         const numCartas = cartasEnBaraja.length;
         const isEven = numCartas % 2 === 0;
         let middleIndex = Math.floor(numCartas / 2);
