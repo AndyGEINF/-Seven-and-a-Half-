@@ -1,3 +1,25 @@
+# Coses que falten
+
+Fer modal amb el resultat o els butons
+
+Posar els diners
+
+Fer que la baraja tingui un tamany que es vagui adaptant.
+
+Size i tipus de butons
+
+Posar sons
+
+Cambiar el logo de React i el nom del titul
+
+Treure les fotos
+
+Posar els containers a la carpeta containers
+
+Seleccionar les fonts i posarles
+
+Limitar caracters del nom.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

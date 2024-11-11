@@ -1,4 +1,3 @@
-// components/Login.js
 import React, { useState, useEffect } from "react";
 import Baraja from "./components/Baraja";
 import Contador from "./components/Contador";
@@ -6,6 +5,7 @@ import styled from "styled-components";
 import Button from "./components/Button";
 import mesaCasino from "./assets/images/mesaCasino.png";
 import { useLocation } from "react-router-dom";
+import OutcomeModal from "./components/OutcomeModal";
 
 
 const deck = [
@@ -71,7 +71,7 @@ const Game = styled.div`
   overflow: hidden;
   gap: 50px;
 
-  transition: box-shadow 1s ease-in-out;
+  transition: box-shadow 2s ease-in-out;
   ${({ end }) =>
     end &&
     `
@@ -139,17 +139,19 @@ const TableGame = () => {
     }, 0);
   };
 
+  /*
   // Verifica si el jugador ha superado el límite y vacía la baraja si es así
   useEffect(() => {
     if (points(playerHand) > 7.5) {
       setPlayerHand([]); // Vacía la mano del jugador
     }
   }, [playerHand]); // Solo se ejecuta cuando `playerHand` cambia
-
+  */
 
 
   return (
     <Game end={points(playerHand) > 7.5}>
+      <OutcomeModal></OutcomeModal>
       <Jugador>
         <Contador numero={points(dealerHand)} showLabel label="Dealer"></Contador>
         <Baraja
