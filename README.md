@@ -12,7 +12,7 @@ Posar sons
 
 Cambiar el logo de React i el nom del titul
 
-Treure les fotos
+Treure les fotos (fer que les cartes utilitzin)
 
 Posar els containers a la carpeta containers
 
