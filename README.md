@@ -1,5 +1,7 @@
 # Coses que falten
 
+Fer que la carta sobresurti onHover
+
 Fer modal amb el resultat o els butons
 
 Posar els diners
