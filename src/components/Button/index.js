@@ -29,11 +29,19 @@ const Boton = styled.button`
     transform: scale(0.98);
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
   }
+
+  &:disabled {
+    background-color: ${COLORS.neutral300};
+    color: ${COLORS.neutral500};
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
 `;
 
-const Button = ({ label, icon, showIcon, onClick }) => {
+const Button = ({ label, icon, showIcon, onClick, disabled }) => {
   return (
-    <Boton onClick={onClick}>
+    <Boton onClick={onClick} disabled={disabled}>
       {showIcon && <Icon iconName={icon}></Icon>}
       {label}
     </Boton>

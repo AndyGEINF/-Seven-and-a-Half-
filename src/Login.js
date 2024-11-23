@@ -20,7 +20,7 @@ const Input = styled.input`
   }
 
   
-  -moz-appearance: textfield;
+  appearance: textfield;
 `;
 
 const Background = styled.div`

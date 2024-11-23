@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import COLORS from "../../styles/colors";
 import Button from "../Button";
@@ -59,16 +59,24 @@ const NewRound = styled.div`
   flex-direction: row;
 `;
 
-const OutcomeModal = ({ title, subtitle, type }) => {
+const OutcomeModal = ({ title, subtitle, maxAmount, onNewRound, onEndGame, type }) => {
+  const [amount, setAmount] = useState("");
+
+  const handleInputChange = (e) => {
+    setAmount(e.target.value);
+  };
+
+  const isNextRoundEnabled = amount !== "" && amount > 0 && amount <= maxAmount;
+
   return (
     <Container>
       {!!title && <Title>{title}</Title>}
       {!!subtitle && <Subtitle>{title}</Subtitle>}
       <NewRound>
-        <Input type="number" placeholder="Amount of money" />
-        <Button label={"New Round"}></Button>
+        <Input type="number" placeholder="Amount of money" value={amount} onChange={handleInputChange} />
+        <Button label={"New Round"} disabled={!isNextRoundEnabled} onClick={onNewRound}></Button>
       </NewRound>
-      <Button label={"End Game"}></Button>
+      <Button label={"End Game"} onClick={onEndGame}></Button>
     </Container>
   );
 };
