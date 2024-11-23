@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Baraja from "./components/Baraja";
 import Contador from "./components/Contador";
 import styled from "styled-components";

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import FONTS from "../../styles/fonts";
 import COLORS from "../../styles/colors";
 import Button from "../Button";
 
@@ -33,11 +32,9 @@ const Container = styled.div`
 `;
 
 const Title = styled.div`
-  ${FONTS.bold}
 `;
 
 const Subtitle = styled.div`
-  ${FONTS.regular}
 `;
 
 const Input = styled.input`
