@@ -29,6 +29,7 @@ const Container = styled.div`
   background-color: ${COLORS.neutral200};
   padding: 20px;
   gap: 20px;
+  z-index:2000;
 `;
 
 const Title = styled.div`
@@ -62,6 +63,8 @@ const NewRound = styled.div`
 const OutcomeModal = ({ title, subtitle, maxAmount, onNewRound, onEndGame, type }) => {
   const [amount, setAmount] = useState("");
 
+  const modalConfig = modalTypes[type];
+
   const handleInputChange = (e) => {
     setAmount(e.target.value);
   };
@@ -70,8 +73,8 @@ const OutcomeModal = ({ title, subtitle, maxAmount, onNewRound, onEndGame, type 
 
   return (
     <Container>
-      {!!title && <Title>{title}</Title>}
-      {!!subtitle && <Subtitle>{title}</Subtitle>}
+      {!!modalConfig?.title && <Title>{modalConfig.title}</Title>}
+      {!!modalConfig?.subtitle && <Subtitle>{modalConfig.subtitle}</Subtitle>}
       <NewRound>
         <Input type="number" placeholder="Amount of money" value={amount} onChange={handleInputChange} />
         <Button label={"New Round"} disabled={!isNextRoundEnabled} onClick={onNewRound}></Button>

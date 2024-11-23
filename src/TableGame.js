@@ -103,6 +103,8 @@ const TableGame = () => {
   const [playerHand, setPlayerHand] = useState([]);
   const [currentDeck, setCurrentDeck] = useState([...deck]);
   const [gameEnded, setGameEnded] = useState(true);
+  const [modalType, setModalType] = useState(""); // Estado vacío para el inicio del juego
+  const [playerButtonsDisabled, setPlayerButtonsDisabled] = useState(false);
 
   // Función para obtener una carta aleatoria
   const drawRandomCard = () => {
@@ -116,8 +118,28 @@ const TableGame = () => {
 
     // Actualizar el mazo y la mano del jugador
     setCurrentDeck(newDeck);
-    setPlayerHand([...playerHand, card]);
+    return card;
   };
+
+  const newCardPlayer = () => {
+    let card = drawRandomCard();
+    setPlayerHand([...playerHand, card]);
+  }
+
+  const newCardDealer = () => {
+    let card = drawRandomCard();
+    setDealerHand([...dealerHand, card]);
+  }
+
+  const prepareGame = () => {
+    setCurrentDeck([...deck]);
+    const card = drawRandomCard();
+    setPlayerHand([card]);
+    setDealerHand([]);
+    setPlayerButtonsDisabled(false);
+  }
+
+
 
   const points = (hand) => {
     return hand.reduce((total, carta) => {
@@ -137,39 +159,54 @@ const TableGame = () => {
 
   useEffect(() => {
     if (points(playerHand) > 7.5) {
+      setModalType("lost");
       setGameEnded(true); // El jugador ha perdido
+    }
+    else if (points(playerHand) === 7.5){
+      stopPlaying();
     }
   }, [playerHand]);
 
+  useEffect(() => {
+    const handleDealerPlay = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // Pausa de 2 segundos
+      if (points(dealerHand) > 7.5) {
+        setModalType("win");
+        setGameEnded(true);
+      }
+      else if (points(dealerHand) === 7.5){
+        setModalType("lostWithDealer");
+        setGameEnded(true);
+      }
+      else if (points(dealerHand) !== 0 && points(dealerHand)>=points(playerHand)){
+        setModalType("lostWithDealer");
+        setGameEnded(true);
+      }
+        else if (points(dealerHand) !== 0) {
+        newCardDealer();
+      }
+    };
+    handleDealerPlay();
+  }, [dealerHand]);
+
   const startNewRound = () => {
     // Se inicia una nueva ronda con una carta para el jugador
-    drawRandomCard();
     setGameEnded(false); // Resetea el estado del juego
+    prepareGame();
   };
 
   const endGame = () => {
     navigate("/login"); // Redirige al login
   };
 
-  const dealerPlay = () => {
-    let dealerPoints = points(dealerHand);
-    while (dealerPoints < 7.5 && dealerPoints <= points(playerHand)) {
-      const card = drawRandomCard();
-      setDealerHand([...dealerHand, card]);
-      dealerPoints = points(dealerHand);
-    }
-    // Evaluar quién ganó
-    if (dealerPoints > 7.5) {
-      setGameEnded(true);
-    } else {
-      setGameEnded(true);
-    }
-  };
+  const stopPlaying = () => {
+    setPlayerButtonsDisabled(true);
+    newCardDealer();
+  }
 
-  console.warn(gameEnded)
   return (
     <Game end={gameEnded}>
-      {gameEnded && <OutcomeModal maxAmount={money} onNewRound={startNewRound} onEndGame={endGame}></OutcomeModal>}
+      {gameEnded && <OutcomeModal maxAmount={money} onNewRound={startNewRound} onEndGame={endGame} type={modalType}></OutcomeModal>}
       <Jugador>
         <Contador numero={points(dealerHand)} showLabel label="Dealer"></Contador>
         <Baraja
@@ -178,11 +215,11 @@ const TableGame = () => {
       </Jugador>
       {!gameEnded  &&
       <Movimientos>
-        <Button icon="more" showIcon label="Card" onClick={drawRandomCard}></Button>
-        <Button icon="hand" showIcon label="Stop" onClick={dealerPlay}></Button>
+        <Button icon="more" showIcon label="Card" onClick={newCardPlayer} disabled={playerButtonsDisabled}></Button>
+        <Button icon="hand" showIcon label="Stop" onClick={stopPlaying} disabled={playerButtonsDisabled}></Button>
       </Movimientos>
       } 
-      <Jugador className="p-4">
+      <Jugador>
         <Contador numero={points(playerHand)} showLabel label={name}></Contador>
         <Baraja
           cartas={playerHand}
