@@ -18,7 +18,7 @@ const neon = keyframes`
 `;
 
 // Contenidor principal
-const PantallaInicialContainer = styled.div`
+const Container = styled.div`
   height: 100vh;
   background-image: url(${mesaCasino});
   background-size: cover;
@@ -69,15 +69,15 @@ const PantallaInicial = () => {
   const navigate = useNavigate();
 
   const handleComenzar = () => {
-    navigate('/login'); // Navega a la ruta de inicio de sesión
+    navigate('/login'); 
   };
 
   return (
-    <PantallaInicialContainer>
+    <Container>
       <H1>SEVEN & HALF</H1>
       <H2>¡Make money never been that easy!</H2>
       <Button onClick={handleComenzar}>Login</Button>
-    </PantallaInicialContainer>
+    </Container>
   );
 };
 
