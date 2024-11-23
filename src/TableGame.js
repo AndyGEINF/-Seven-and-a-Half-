@@ -6,6 +6,7 @@ import Button from "./components/Button";
 import mesaCasino from "./assets/images/mesaCasino.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import OutcomeModal from "./components/OutcomeModal";
+import COLORS from "./styles/colors";
 
 
 const deck = [
@@ -71,7 +72,7 @@ const Game = styled.div`
   overflow: hidden;
   gap: 50px;
 
-  transition: box-shadow 2s ease-in-out;
+  transition: box-shadow 1s ease-in-out;
   ${({ end }) =>
     end &&
     `
@@ -89,9 +90,27 @@ const Jugador = styled.div`
 `;
 
 const Movimientos = styled.div`
-  display: flex;
+  display: ${({ show }) => (show ? 'flex' : 'none')};
   flex-direction: row;
   gap: 50px;
+`;
+
+const TotalMoney = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${COLORS.neutral0};
+  border-radius: 5px;
+  padding: 5px;
+`;
+
+const Bet = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${COLORS.neutral0};
+  border-radius: 5px;
+  padding: 5px;
 `;
 
 const TableGame = () => {
@@ -105,6 +124,8 @@ const TableGame = () => {
   const [gameEnded, setGameEnded] = useState(true);
   const [modalType, setModalType] = useState(""); // Estado vacío para el inicio del juego
   const [playerButtonsDisabled, setPlayerButtonsDisabled] = useState(false);
+  const [playerBet, setPlayerBet] = useState();
+  const [playerTotalMoney, setPlayerTotalMoney] = useState(money);
 
   // Función para obtener una carta aleatoria
   const drawRandomCard = () => {
@@ -161,6 +182,7 @@ const TableGame = () => {
     if (points(playerHand) > 7.5) {
       setModalType("lost");
       setGameEnded(true); // El jugador ha perdido
+      setPlayerTotalMoney((prevMoney) => prevMoney - playerBet);
     }
     else if (points(playerHand) === 7.5){
       stopPlaying();
@@ -173,14 +195,17 @@ const TableGame = () => {
       if (points(dealerHand) > 7.5) {
         setModalType("win");
         setGameEnded(true);
+        setPlayerTotalMoney((prevMoney) => prevMoney + playerBet);
       }
       else if (points(dealerHand) === 7.5){
         setModalType("lostWithDealer");
         setGameEnded(true);
+        setPlayerTotalMoney((prevMoney) => prevMoney - playerBet);
       }
       else if (points(dealerHand) !== 0 && points(dealerHand)>=points(playerHand)){
         setModalType("lostWithDealer");
         setGameEnded(true);
+        setPlayerTotalMoney((prevMoney) => prevMoney - playerBet);
       }
         else if (points(dealerHand) !== 0) {
         newCardDealer();
@@ -204,23 +229,28 @@ const TableGame = () => {
     newCardDealer();
   }
 
+  const handleSetBet = (bet) => {
+    const betValue = parseFloat(bet);
+    setPlayerBet(betValue);
+  };
+
   return (
     <Game end={gameEnded}>
-      {gameEnded && <OutcomeModal maxAmount={money} onNewRound={startNewRound} onEndGame={endGame} type={modalType}></OutcomeModal>}
+      {gameEnded && <OutcomeModal maxAmount={playerTotalMoney} onNewRound={startNewRound} onEndGame={endGame} type={modalType} onSetBet={handleSetBet}></OutcomeModal>}
       <Jugador>
         <Contador numero={points(dealerHand)} showLabel label="Dealer"></Contador>
         <Baraja
           cartas={dealerHand}
         ></Baraja>
       </Jugador>
-      {!gameEnded  &&
-      <Movimientos>
+      <Movimientos show={!gameEnded}>
         <Button icon="more" showIcon label="Card" onClick={newCardPlayer} disabled={playerButtonsDisabled}></Button>
+        <Bet>Bet: {playerBet}</Bet>
         <Button icon="hand" showIcon label="Stop" onClick={stopPlaying} disabled={playerButtonsDisabled}></Button>
       </Movimientos>
-      } 
       <Jugador>
         <Contador numero={points(playerHand)} showLabel label={name}></Contador>
+        <TotalMoney>Total Money: {playerTotalMoney}</TotalMoney>
         <Baraja
           cartas={playerHand}
         >

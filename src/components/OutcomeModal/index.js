@@ -60,13 +60,20 @@ const NewRound = styled.div`
   flex-direction: row;
 `;
 
-const OutcomeModal = ({ title, subtitle, maxAmount, onNewRound, onEndGame, type }) => {
+const OutcomeModal = ({ title, subtitle, maxAmount, onNewRound, onEndGame, onSetBet, type }) => {
   const [amount, setAmount] = useState("");
 
   const modalConfig = modalTypes[type];
 
   const handleInputChange = (e) => {
     setAmount(e.target.value);
+  };
+
+  const handleNewRound = () => {
+    if(onSetBet) {
+      onSetBet(amount);
+    }
+    onNewRound();
   };
 
   const isNextRoundEnabled = amount !== "" && amount > 0 && amount <= maxAmount;
@@ -77,7 +84,7 @@ const OutcomeModal = ({ title, subtitle, maxAmount, onNewRound, onEndGame, type 
       {!!modalConfig?.subtitle && <Subtitle>{modalConfig.subtitle}</Subtitle>}
       <NewRound>
         <Input type="number" placeholder="Amount of money" value={amount} onChange={handleInputChange} />
-        <Button label={"New Round"} disabled={!isNextRoundEnabled} onClick={onNewRound}></Button>
+        <Button label={"New Round"} disabled={!isNextRoundEnabled} onClick={handleNewRound}></Button>
       </NewRound>
       <Button label={"End Game"} onClick={onEndGame}></Button>
     </Container>
