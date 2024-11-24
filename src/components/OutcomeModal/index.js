@@ -66,7 +66,10 @@ const OutcomeModal = ({ title, subtitle, maxAmount, onNewRound, onEndGame, onSet
   const modalConfig = modalTypes[type];
 
   const handleInputChange = (e) => {
-    setAmount(e.target.value);
+    const canviInput = e.target.value;
+    if (canviInput.length <= 8) {
+      setAmount(canviInput);
+    }
   };
 
   const handleNewRound = () => {
@@ -83,7 +86,7 @@ const OutcomeModal = ({ title, subtitle, maxAmount, onNewRound, onEndGame, onSet
       {!!modalConfig?.title && <Title>{modalConfig.title}</Title>}
       {!!modalConfig?.subtitle && <Subtitle>{modalConfig.subtitle}</Subtitle>}
       <NewRound>
-        <Input type="number" placeholder="Amount of money" value={amount} onChange={handleInputChange} />
+        <Input type="number" maxLength={8} placeholder="Amount of money" value={amount} onChange={handleInputChange} />
         <Button label={"New Round"} disabled={!isNextRoundEnabled} onClick={handleNewRound}></Button>
       </NewRound>
       <Button label={"End Game"} onClick={onEndGame}></Button>

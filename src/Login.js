@@ -70,22 +70,22 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    const validMoney = isNaN(money) || money === '' ? 0 : money;
+    const validMoney = isNaN(money) || money === '' ? 0 : parseFloat(money);
     const validName = name.trim() === '' ? 'Player1' : name;
     navigate('/game', { state: { name: validName, money: validMoney } });
   };
 
   const handleNameChange = (e) => {
-    const value = e.target.value;
-    if (value.length <= 8) {
-      setName(value);
+    const canviName = e.target.value;
+    if (canviName.length <= 8) {
+      setName(canviName);
     }
   };
 
   const handleMoneyChange = (e) => {
-    const value = e.target.value;
-    if (value.length <= 8) {
-      setMoney(value); 
+    const canviMoney = e.target.value;
+    if (canviMoney.length <= 8) {
+      setMoney(canviMoney);
     }
   };
 
@@ -97,13 +97,14 @@ const Login = () => {
           type="text"
           placeholder="Name"
           value={name}
-          maxLength={8} // Limita a 8 caracteres
+          
           onChange={handleNameChange}
         />
         <Input
           type="number"
           placeholder="Amount of money"
           value={money}
+        
           onFocus={() => money === '0' && setMoney('')}
           onBlur={() => money === '' && setMoney('0')}
           onChange={handleMoneyChange}
