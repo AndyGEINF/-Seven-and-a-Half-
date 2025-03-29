@@ -1,0 +1,7 @@
+# Ignorar la carpeta node_modules completa
+node_modules/
+
+# Ignorar archivos de caché de herramientas como ESLint y Webpack
+*.cache
+*.pack
+node_modules
