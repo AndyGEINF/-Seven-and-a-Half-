@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/-Seven-and-a-Half-/static/css/main.79d19d76.css",
-    "main.js": "/-Seven-and-a-Half-/static/js/main.3522d308.js",
-    "static/js/453.071fb75d.chunk.js": "/-Seven-and-a-Half-/static/js/453.071fb75d.chunk.js",
-    "static/media/mesaCasino.png": "/-Seven-and-a-Half-/static/media/mesaCasino.2151836c61f702a24b0d.png",
-    "index.html": "/-Seven-and-a-Half-/index.html",
-    "main.79d19d76.css.map": "/-Seven-and-a-Half-/static/css/main.79d19d76.css.map",
-    "main.3522d308.js.map": "/-Seven-and-a-Half-/static/js/main.3522d308.js.map",
-    "453.071fb75d.chunk.js.map": "/-Seven-and-a-Half-/static/js/453.071fb75d.chunk.js.map"
+    "main.css": "/static/css/main.79d19d76.css",
+    "main.js": "/static/js/main.d975d07c.js",
+    "static/js/453.071fb75d.chunk.js": "/static/js/453.071fb75d.chunk.js",
+    "static/media/mesaCasino.png": "/static/media/mesaCasino.2151836c61f702a24b0d.png",
+    "index.html": "/index.html",
+    "main.79d19d76.css.map": "/static/css/main.79d19d76.css.map",
+    "main.d975d07c.js.map": "/static/js/main.d975d07c.js.map",
+    "453.071fb75d.chunk.js.map": "/static/js/453.071fb75d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.79d19d76.css",
-    "static/js/main.3522d308.js"
+    "static/js/main.d975d07c.js"
   ]
 }
